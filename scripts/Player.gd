@@ -1,13 +1,14 @@
 extends KinematicBody2D
 
 const VELX = 500
-const GRAVITY = 1500
+const GRAVITY = 2500
 const JUMP_SPEED = 500
 
 var velocity = Vector2(0, 0)
 var jump = false
 var bodie = 1 setget set_sprite
 var anime=""
+var pre_fire = preload("res://scenes/Fire.tscn")
 
 var anim = [
 	"res://img/sprites/run.png",
@@ -15,6 +16,7 @@ var anim = [
 	] 
 
 func _ready():
+	set_physics_process(true)
 	pass 
 	
 func _draw():
@@ -31,10 +33,19 @@ func _physics_process(delta):
 		new_anim = "run"
 		velocity.x = VELX
 		get_node( "Sprite" ).set_flip_h( false )
+	if Input.is_action_pressed("ui_up"):
+		jump = true
 	if Input.is_action_pressed("ui_left"):
 		new_anim = "run"
 		velocity.x -= VELX
 		get_node( "Sprite" ).set_flip_h( true )
+	if Input.is_action_pressed("ui_shot"):
+		var fire = pre_fire.instance()
+		fire.global_position = $muzzle.global_position
+#		fire.dir = Vector2(cos($muzzle.global_rotation), sin($muzzle.global_rotation)).normalized()
+		get_parent().add_child(fire)
+		
+		print("tales")
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
@@ -42,11 +53,10 @@ func _physics_process(delta):
 		anime = new_anim
 		$"Run-animation".play(anime)
 	
-	if is_on_floor():
-		if jump:
-			velocity.y = -JUMP_SPEED
+#	if is_on_floor():
+	if jump:
+		velocity.y = -JUMP_SPEED
 	jump = false
-	pass
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -56,4 +66,3 @@ func set_sprite(val):
 	bodie = val
 	if Engine.editor_hint:
 		update()
-	pass
