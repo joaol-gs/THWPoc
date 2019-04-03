@@ -1,0 +1,63 @@
+extends KinematicBody2D
+
+const MAX_SPEED = 200
+const JUMP_SPEED = 4500
+var acell = 0
+var jump = 0
+var bodie = 1 setget set_sprite
+var anime=""
+const DOUBLE_JUMP = 2
+var anim = [
+	"res://img/sprites/run.png",
+	"res://img/sprites/iddle.png"
+	] 
+
+
+
+func _ready():
+	pass # Replace with function body.
+	
+func _draw():
+	$Sprite.texture = load(anim[bodie])
+
+
+func _physics_process(delta):
+	var new_anim = "iddle"
+	
+	
+	var dir_x = 0
+	var dir_y = 2 
+	
+	
+	if Input.is_action_pressed("ui_right"):
+		new_anim = "run"
+		dir_x += 1
+		get_node( "Sprite" ).set_flip_h( false )
+		
+	if Input.is_action_pressed("ui_left"):
+		new_anim = "run"
+		dir_x -= 1
+		get_node( "Sprite" ).set_flip_h( true )
+	if Input.is_action_just_released("ui_up"):
+		dir_y -= JUMP_SPEED * delta
+		
+		
+#	if Input.is_action_pressed("ui_down"):
+#		dir_y += 1
+#	translate(Vector2(dir_x , dir_y) * delta * speed)
+	move_and_slide(Vector2(dir_x , dir_y)* MAX_SPEED)
+	
+	if new_anim != anime:
+		anime = new_anim
+		$"Run-animation".play(anime)
+
+
+
+func _on_Area2D_body_entered(body):
+	jump = 0
+
+func set_sprite(val):
+	bodie = val
+	if Engine.editor_hint:
+		update()
+	pass
