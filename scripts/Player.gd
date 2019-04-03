@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const VELX = 500
-const GRAVITY = 2500
+const GRAVITY = 1500
 const JUMP_SPEED = 500
 
 var velocity = Vector2(0, 0)
@@ -33,12 +33,15 @@ func _physics_process(delta):
 		new_anim = "run"
 		velocity.x = VELX
 		get_node( "Sprite" ).set_flip_h( false )
+		
 	if Input.is_action_pressed("ui_up"):
 		jump = true
+		
 	if Input.is_action_pressed("ui_left"):
 		new_anim = "run"
 		velocity.x -= VELX
 		get_node( "Sprite" ).set_flip_h( true )
+		
 	if Input.is_action_pressed("ui_shot"):
 		var fire = pre_fire.instance()
 		fire.global_position = $muzzle.global_position
