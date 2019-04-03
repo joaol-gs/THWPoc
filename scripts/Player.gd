@@ -33,6 +33,7 @@ func _physics_process(delta):
 		get_node( "Sprite" ).set_flip_h( false )
 	if Input.is_action_pressed("ui_left"):
 		new_anim = "run"
+		velocity.x -= VELX
 		get_node( "Sprite" ).set_flip_h( true )
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
@@ -44,10 +45,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		if jump:
 			velocity.y = -JUMP_SPEED
-			jump = false
-	else:
-		print("buneco is over of the floor")
-	
+	jump = false
 	pass
 
 func _input(event):
