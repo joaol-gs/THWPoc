@@ -84,10 +84,6 @@ anims/run = SubResource( 2 )
 position = Vector2( 11.1734, -1.39668 )
 shape = SubResource( 3 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 226.602, -36.7052 )
-current = true
-
 [node name="muzzle" type="Position2D" parent="."]
 position = Vector2( 43.7857, 4.64395 )
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Chao.gd" type="Script" id=2]
-[ext_resource path="res://img/background/Layer_0000_9.png" type="Texture" id=3]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Chao.gd" type="Script" id=3]
+[ext_resource path="res://img/background/Layer_0000_9.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 418.96, 10 )
@@ -11,7 +12,24 @@ extents = Vector2( 418.96, 10 )
 position = Vector2( -1.75809, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 283.686, -38.447 )
+position = Vector2( 54.209, 126.258 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
+
+[node name="Chao" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Chao"]
+position = Vector2( 79.5766, 99.9333 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Chao/ParallaxLayer"]
+margin_left = -85.1284
+margin_top = -605.152
+margin_right = 842.872
+margin_bottom = 187.848
+texture = ExtResource( 4 )
 
 [node name="floor" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -24,19 +42,4 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 shape = SubResource( 1 )
-
-[node name="Chao" type="ParallaxBackground" parent="."]
-editor/display_folded = true
-script = ExtResource( 2 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Chao"]
-position = Vector2( 79.5766, 99.9333 )
-motion_mirroring = Vector2( 928, 0 )
-
-[node name="TextureRect" type="TextureRect" parent="Chao/ParallaxLayer"]
-margin_left = -85.1284
-margin_top = -605.152
-margin_right = 842.872
-margin_bottom = 187.848
-texture = ExtResource( 3 )
 

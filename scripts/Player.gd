@@ -35,6 +35,8 @@ func _physics_process(delta):
 		get_node( "Sprite" ).set_flip_h( false )
 		
 	if Input.is_action_pressed("ui_up"):
+		
+		velocity.y = -JUMP_SPEED
 		jump = true
 		
 	if Input.is_action_pressed("ui_left"):
@@ -49,9 +51,12 @@ func _physics_process(delta):
 		$"Run-animation".play(anime)
 	
 #	if is_on_floor():
-	if jump:
-		velocity.y = -JUMP_SPEED
-	jump = false
+#		print("true")
+#		if jump:
+#
+#			jump = false
+	else:
+		print("false")
 
 func set_sprite(val):
 	bodie = val
