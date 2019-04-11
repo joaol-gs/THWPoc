@@ -36,7 +36,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("ui_up"):
 		
-		velocity.y = -JUMP_SPEED
+		
 		jump = true
 		
 	if Input.is_action_pressed("ui_left"):
@@ -50,14 +50,14 @@ func _physics_process(delta):
 		anime = new_anim
 		$"Run-animation".play(anime)
 	
-#	if is_on_floor():
-#		print("true")
-#		if jump:
-#
-#			jump = false
+	if is_on_floor():
+		print("true")
+		if jump:
+			velocity.y = -JUMP_SPEED
+
 	else:
 		print("false")
-
+	jump = false
 func set_sprite(val):
 	bodie = val
 	if Engine.editor_hint:
