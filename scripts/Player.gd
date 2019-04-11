@@ -23,7 +23,7 @@ func _draw():
 	$Sprite.texture = load(anim[bodie])
 
 func _physics_process(delta):
-	
+	print(global_position)
 	var new_anim = "iddle"
 	
 	velocity.y += GRAVITY * delta
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_right"):
 		new_anim = "run"
-		velocity.x = VELX
+#		velocity.x = VELX
 		get_node( "Sprite" ).set_flip_h( false )
 		
 	if Input.is_action_pressed("ui_up"):
@@ -39,16 +39,8 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("ui_left"):
 		new_anim = "run"
-		velocity.x -= VELX
+#		velocity.x -= VELX
 		get_node( "Sprite" ).set_flip_h( true )
-		
-	if Input.is_action_pressed("ui_shot"):
-		var fire = pre_fire.instance()
-		fire.global_position = $muzzle.global_position
-#		fire.dir = Vector2(cos($muzzle.global_rotation), sin($muzzle.global_rotation)).normalized()
-		get_parent().add_child(fire)
-		
-		print("tales")
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
@@ -61,10 +53,6 @@ func _physics_process(delta):
 		velocity.y = -JUMP_SPEED
 	jump = false
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			jump = true
 func set_sprite(val):
 	bodie = val
 	if Engine.editor_hint:

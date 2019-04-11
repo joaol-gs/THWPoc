@@ -14,7 +14,6 @@
 script = ExtResource( 1 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-editor/display_folded = true
 position = Vector2( 0.0900879, -115.445 )
 motion_scale = Vector2( 0, 1 )
 motion_mirroring = Vector2( 928, 0 )
