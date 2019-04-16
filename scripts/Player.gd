@@ -23,26 +23,32 @@ func _draw():
 	$Sprite.texture = load(anim[bodie])
 
 func _physics_process(delta):
-	print(global_position)
 	var new_anim = "iddle"
+	var moving = false
 	
 	velocity.y += GRAVITY * delta
 	velocity.x = 0
 	
 	if Input.is_action_pressed("ui_right"):
+		moving = true
 		new_anim = "run"
 #		velocity.x = VELX
 		get_node( "Sprite" ).set_flip_h( false )
 		
 	if Input.is_action_pressed("ui_up"):
-		
-		
 		jump = true
 		
 	if Input.is_action_pressed("ui_left"):
 		new_anim = "run"
 #		velocity.x -= VELX
 		get_node( "Sprite" ).set_flip_h( true )
+		
+	if Input.is_action_just_pressed("ui_shot"):
+		if moving:
+			print("Fogo no buraco")
+			var fire = pre_fire.instance()
+			fire.global_position = $muzzle.global_position
+			get_parent().add_child(fire)
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
@@ -51,12 +57,8 @@ func _physics_process(delta):
 		$"Run-animation".play(anime)
 	
 	if is_on_floor():
-		print("true")
 		if jump:
 			velocity.y = -JUMP_SPEED
-
-	else:
-		print("false")
 	jump = false
 func set_sprite(val):
 	bodie = val
