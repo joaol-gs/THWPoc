@@ -45,10 +45,11 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_shot"):
 		if moving:
-			print("Fogo no buraco")
-			var fire = pre_fire.instance()
-			fire.global_position = $muzzle.global_position
-			get_parent().add_child(fire)
+			if get_tree().get_nodes_in_group("fires").size() < 10:
+				print("Fogo no buraco")
+				var fire = pre_fire.instance()
+				fire.global_position = $muzzle.global_position
+				get_parent().add_child(fire)
 	
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
@@ -60,6 +61,7 @@ func _physics_process(delta):
 		if jump:
 			velocity.y = -JUMP_SPEED
 	jump = false
+		
 func set_sprite(val):
 	bodie = val
 	if Engine.editor_hint:

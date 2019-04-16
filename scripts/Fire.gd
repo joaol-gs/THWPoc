@@ -9,3 +9,8 @@ func _ready():
 func _process(delta):
 	translate(dir * vel * delta)
 	pass
+
+func _on_VisibilityNotifier2D_screen_exited():
+	print("saiu")
+	queue_free()
+	

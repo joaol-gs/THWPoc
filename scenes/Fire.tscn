@@ -20,3 +20,10 @@ position = Vector2( 2.64076, 0 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." groups=[
+"fires",
+]]
+position = Vector2( 2.86082, 0 )
+scale = Vector2( 1.99029, 1 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
