@@ -1,6 +1,6 @@
 extends Area2D
 
-var vel = 300
+var vel = 400
 var dir = Vector2(1, 0)
 
 func _ready():
@@ -11,6 +11,9 @@ func _process(delta):
 	pass
 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("saiu")
 	queue_free()
 	
+
+
+func _on_Fire_area_entered(area):
+	queue_free()
