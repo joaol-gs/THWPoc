@@ -4,6 +4,10 @@ const VELX = 500
 const GRAVITY = 1500
 const JUMP_SPEED = 500
 
+export var life = 100
+export var energy = 10
+
+
 var velocity = Vector2(0, 0)
 var jump = false
 var bodie = 1 setget set_sprite
