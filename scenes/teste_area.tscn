@@ -58,7 +58,6 @@ script = ExtResource( 1 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 [node name="Chao" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 script = ExtResource( 3 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Chao"]
@@ -88,7 +87,7 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 3.14
 
 [node name="Spawn" type="Position2D" parent="."]
 position = Vector2( 683.157, 134.737 )
@@ -133,7 +132,7 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 margin_left = 45.0
 margin_top = 5.0
-margin_right = 116.0
+margin_right = 240.0
 margin_bottom = 57.0
 
 [node name="score" type="Label" parent="Panel"]
@@ -141,16 +140,30 @@ margin_left = 13.1711
 margin_top = 8.20665
 margin_right = 65.1711
 margin_bottom = 81.2066
+rect_pivot_offset = Vector2( 33.587, 26.7934 )
 theme = SubResource( 7 )
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0.937255, 0, 1 )
-text = "50
+text = "0
+"
+
+[node name="lifes" type="Label" parent="Panel"]
+margin_left = 160.498
+margin_top = 6.35348
+margin_right = 212.498
+margin_bottom = 79.3535
+rect_pivot_offset = Vector2( 33.587, 26.7934 )
+theme = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "2
 "
 
 [node name="scoreTime" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="DeadMenu" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 z_index = 4096
 

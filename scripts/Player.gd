@@ -6,7 +6,8 @@ const JUMP_SPEED = 600
 
 export var life = 100
 export var energy = 10
-
+export var lifes = 2
+export var moving = false
 
 var velocity = Vector2(0, 0)
 var jump = false
@@ -27,8 +28,8 @@ func _draw():
 	$Sprite.texture = load(anim[bodie])
 
 func _physics_process(delta):
+	moving = false
 	var new_anim = "iddle"
-	var moving = false
 	
 	velocity.y += GRAVITY * delta
 	velocity.x = 0
@@ -64,6 +65,7 @@ func _physics_process(delta):
 		if jump:
 			velocity.y = -JUMP_SPEED
 	jump = false
+	
 
 func set_sprite(val):
 	bodie = val
