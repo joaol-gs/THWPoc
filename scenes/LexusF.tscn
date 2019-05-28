@@ -23,7 +23,6 @@ func _process(delta):
 	pass
 
 func _on_Area2D_area_entered(area):
-	print(\"entrou\")
 	queue_free()
 "
 
@@ -52,6 +51,7 @@ shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
 editor/display_folded = true
+collision_layer = 4
 
 [node name="cabeca2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( -3.41747, -11.0022 )

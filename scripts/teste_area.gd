@@ -13,11 +13,17 @@ func _ready():
 	pass
 
 func _process(delta):
+	
+	print(String(get_node("stats/PBLife").value) + ", " +String(lp))
+	
 	lp = $Player.life
 	le = $Player.energy
 	_animaBarra()
 	
-	
+	if lp == -10:
+		get_tree().paused = true
+		$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
+		$DeadMenu.visible = true
 
 func _on_Timer_timeout():
 	var lexusF = pre_lexusf.instance()
@@ -28,7 +34,7 @@ func _on_Timer_timeout():
 
 func _animaBarra():
 	if get_node("stats/PBLife").value > lp:
-		get_node("stats/PBLife").value -= 0.3
+		get_node("stats/PBLife").value -= 1
 	elif get_node("stats/PBLife").value < lp:
 		get_node("stats/PBLife").value += 1
 	
@@ -41,3 +47,8 @@ func _on_scoreTime_timeout():
 	score += 2
 	$Panel/score.set_text(String(score))
 	$scoreTime.start()
+
+
+func _on_Button_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()

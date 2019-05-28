@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/teste_area.gd" type="Script" id=1]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=2]
@@ -31,7 +31,27 @@ font_path = "res://font/GameCube.ttf"
 size = 27
 font_data = SubResource( 8 )
 
+[sub_resource type="Theme" id=10]
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0588235, 0, 0.14902, 1 )
+
+[sub_resource type="DynamicFontData" id=12]
+font_path = "res://font/Quick.ttf"
+
+[sub_resource type="DynamicFont" id=13]
+size = 17
+font_data = SubResource( 12 )
+
+[sub_resource type="DynamicFontData" id=14]
+font_path = "res://font/Quick.ttf"
+
+[sub_resource type="DynamicFont" id=15]
+size = 20
+font_data = SubResource( 14 )
+
 [node name="teste_area" type="Node2D"]
+pause_mode = 1
 position = Vector2( -1.75809, 0 )
 script = ExtResource( 1 )
 
@@ -129,5 +149,37 @@ text = "50
 
 [node name="scoreTime" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="DeadMenu" type="Node2D" parent="."]
+visible = false
+z_index = 4096
+
+[node name="Dead" type="Panel" parent="DeadMenu"]
+pause_mode = 2
+margin_left = 171.3
+margin_top = 50.8062
+margin_right = 566.3
+margin_bottom = 237.806
+
+[node name="Button" type="Button" parent="DeadMenu/Dead"]
+margin_left = 60.7208
+margin_top = 93.6396
+margin_right = 338.721
+margin_bottom = 158.64
+theme = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
+text = "De novo"
+
+[node name="Label" type="Label" parent="DeadMenu/Dead"]
+margin_left = 32.7905
+margin_top = 30.2743
+margin_right = 382.79
+margin_bottom = 81.2743
+custom_fonts/font = SubResource( 15 )
+text = "Uau, tem um texto top
+"
+valign = 1
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="scoreTime" to="." method="_on_scoreTime_timeout"]
+[connection signal="pressed" from="DeadMenu/Dead/Button" to="." method="_on_Button_pressed"]
