@@ -8,6 +8,7 @@ var score = 0
 var gameStart = true
 
 func _ready():
+	$Aviso/avisoTimer.start()
 	$Timer.start()
 	$scoreTime.start()
 	setVidas()
@@ -17,8 +18,6 @@ func _process(delta):
 	lp = $Player.life
 	le = $Player.energy
 	_animaBarra()
-	print(get_tree().get_nodes_in_group("quants"))
-	
 	if lp < 0:
 		if $Player.lifes == 1:
 			deadMen()
@@ -64,10 +63,12 @@ func deadMen():
 	var enemies = get_tree().get_nodes_in_group("quants")
 	for enemy in enemies:
 		 enemy.queue_free()
-	
 	get_tree().paused = true
 	$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
 	$DeadMenu.visible = true
 
 func setVidas() :
 	$Panel/lifes.set_text(String($Player.lifes))
+
+func _on_avisoTimer_timeout():
+	$Aviso.visible = false
