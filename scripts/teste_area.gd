@@ -14,15 +14,14 @@ func _ready():
 	pass
 
 func _process(delta):
-	
 	lp = $Player.life
 	le = $Player.energy
 	_animaBarra()
+	print(get_tree().get_nodes_in_group("quants"))
+	
 	if lp < 0:
 		if $Player.lifes == 1:
-			get_tree().paused = true
-			$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
-			$DeadMenu.visible = true
+			deadMen()
 		else:
 			$Player.life = 100
 			$Player.lifes -= 1
@@ -34,6 +33,7 @@ func _on_Timer_timeout():
 		var lexusF = pre_lexusf.instance()
 		lexusF.global_position = $Spawn.global_position
 		get_parent().add_child(lexusF)
+		lexusF.add_to_group("quants")
 		if $Timer.wait_time > .3:
 			$Timer.wait_time -= .1
 		$Timer.start()
@@ -59,6 +59,15 @@ func _on_scoreTime_timeout():
 func _on_Button_pressed():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func deadMen():
+	var enemies = get_tree().get_nodes_in_group("quants")
+	for enemy in enemies:
+		 enemy.queue_free()
+	
+	get_tree().paused = true
+	$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
+	$DeadMenu.visible = true
 
 func setVidas() :
 	$Panel/lifes.set_text(String($Player.lifes))
