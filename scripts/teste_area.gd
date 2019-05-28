@@ -14,13 +14,10 @@ func _ready():
 
 func _process(delta):
 	
-	print(String(get_node("stats/PBLife").value) + ", " +String(lp))
-	
 	lp = $Player.life
 	le = $Player.energy
 	_animaBarra()
-	
-	if lp == -10:
+	if lp < 0:
 		get_tree().paused = true
 		$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
 		$DeadMenu.visible = true

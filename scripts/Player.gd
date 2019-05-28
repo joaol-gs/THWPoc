@@ -50,7 +50,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_shot"):
 		if moving:
 			if get_tree().get_nodes_in_group("fires").size() < 2:
-				print("Fogo no buraco")
 				var fire = pre_fire.instance()
 				fire.global_position = $muzzle.global_position
 				get_parent().add_child(fire)
