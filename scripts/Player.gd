@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 const VELX = 500
 const GRAVITY = 1500
-const JUMP_SPEED = 500
+const JUMP_SPEED = 600
 
 export var life = 100
 export var energy = 10
@@ -66,7 +66,12 @@ func _physics_process(delta):
 			velocity.y = -JUMP_SPEED
 	jump = false
 		
+	if life == 0:
+		get_tree().paused = true
 func set_sprite(val):
 	bodie = val
 	if Engine.editor_hint:
 		update()
+
+func _on_Area2D_area_entered(area):
+	life -= 10
