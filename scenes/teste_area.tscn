@@ -133,7 +133,6 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 45.0
 margin_top = 5.0
 margin_right = 240.0
@@ -167,13 +166,11 @@ text = "2
 wait_time = 0.5
 
 [node name="DeadMenu" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 z_index = 4096
 
 [node name="Dead" type="Panel" parent="DeadMenu"]
 pause_mode = 2
-editor/display_folded = true
 margin_left = 171.3
 margin_top = 50.8062
 margin_right = 566.3
