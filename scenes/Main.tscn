@@ -1,52 +1,63 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://img/GUI/rect10.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ParallaxBackgroundload.gd" type="Script" id=4]
 
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://font/Quick.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = SubResource( 1 )
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="btnStart" type="TouchScreenButton" parent="Menu"]
 position = Vector2( 157.828, 97.6779 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 2 )
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+[node name="Label" type="Label" parent="Menu/btnStart"]
+margin_left = 221.485
+margin_top = 83.7699
+margin_right = 392.485
+margin_bottom = 188.77
+custom_fonts/font = SubResource( 2 )
+text = "Start
+"
+
+[node name="ParallaxBackground" parent="Menu" instance=ExtResource( 3 )]
 script = ExtResource( 4 )
 
-[node name="ParallaxLayer" parent="ParallaxBackground" index="0"]
-position = Vector2( -22.5201, -104.894 )
-
-[node name="ParallaxLayer3" parent="ParallaxBackground" index="1"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]
 motion_scale = Vector2( 0.01, 1 )
 
-[node name="ParallaxLayer2" parent="ParallaxBackground" index="2"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer3" parent="Menu/ParallaxBackground" index="1"]
 motion_scale = Vector2( 0.02, 1 )
 
-[node name="ParallaxLayer4" parent="ParallaxBackground" index="3"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer2" parent="Menu/ParallaxBackground" index="2"]
 motion_scale = Vector2( 0.03, 1 )
 
-[node name="ParallaxLayer5" parent="ParallaxBackground" index="4"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer4" parent="Menu/ParallaxBackground" index="3"]
 motion_scale = Vector2( 0.04, 1 )
 
-[node name="ParallaxLayer6" parent="ParallaxBackground" index="5"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer5" parent="Menu/ParallaxBackground" index="4"]
 motion_scale = Vector2( 0.05, 1 )
 
-[node name="ParallaxLayer7" parent="ParallaxBackground" index="6"]
-position = Vector2( -22.5201, -104.894 )
+[node name="ParallaxLayer6" parent="Menu/ParallaxBackground" index="5"]
 motion_scale = Vector2( 0.06, 1 )
 
-[node name="ParallaxLayer8" parent="ParallaxBackground" index="7"]
-editor/display_folded = false
-position = Vector2( -22.5201, -104.894 )
-motion_scale = Vector2( 0.07, 1 )
-[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[node name="ParallaxLayer7" parent="Menu/ParallaxBackground" index="6"]
+motion_scale = Vector2( 0.06, 1 )
 
-[editable path="ParallaxBackground"]
+[node name="ParallaxLayer8" parent="Menu/ParallaxBackground" index="7"]
+editor/display_folded = false
+motion_scale = Vector2( 0.07, 1 )
+[connection signal="pressed" from="Menu/btnStart" to="." method="_on_TouchScreenButton_pressed"]
+
+[editable path="Menu/ParallaxBackground"]
