@@ -30,7 +30,6 @@ func _draw():
 	$Sprite.texture = load(anim[bodie])
 
 func _physics_process(delta):
-	moving = false
 	velocity.y += GRAVITY * delta
 	velocity.x = 0
 	if Input.is_action_pressed("ui_right"):

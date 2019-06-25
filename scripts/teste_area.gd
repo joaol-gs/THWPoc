@@ -29,8 +29,23 @@ func _process(delta):
 		$BtnEspecial.visible = true
 	else:
 		$BtnEspecial.visible = false
+		
+#===============================Movimentação========================================
+	#Movimentação por touch
 	if $BtnLeft.is_pressed():
 		$Player.go_right()
+		$ParallaxBackground.go_right()
+		$Chao.go_right()
+	else:
+		$Player.moving = false
+		
+	#Movimentoação por teclado
+	if Input.is_action_pressed("ui_right"):
+		$ParallaxBackground.go_right()
+		$Player.go_right()
+		$Chao.go_right()
+	if Input.is_action_pressed("ui_up"):
+		$Player.jump = true
 
 func _on_Timer_timeout():
 	if $Player.moving :
