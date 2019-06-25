@@ -245,3 +245,4 @@ normal = ExtResource( 9 )
 [connection signal="pressed" from="DeadMenu/Dead/Button" to="." method="_on_Button_pressed"]
 [connection signal="timeout" from="Aviso/avisoTimer" to="." method="_on_avisoTimer_timeout"]
 [connection signal="pressed" from="BtnUP" to="Player" method="_on_BtnUP_pressed"]
+[connection signal="pressed" from="BtnFire" to="Player" method="_on_BtnFire_pressed"]

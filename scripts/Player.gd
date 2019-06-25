@@ -72,3 +72,11 @@ func go_right():
 	moving = true
 	new_anim = "run"
 	get_node( "Sprite" ).set_flip_h( false )
+
+
+func _on_BtnFire_pressed():
+	if moving:
+			if get_tree().get_nodes_in_group("fires").size() < 2:
+				var fire = pre_fire.instance()
+				fire.global_position = $muzzle.global_position
+				get_parent().add_child(fire)

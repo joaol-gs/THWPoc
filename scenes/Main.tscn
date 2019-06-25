@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://img/GUI/rect10.png" type="Texture" id=2]
 [ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ParallaxBackgroundload.gd" type="Script" id=4]
+[ext_resource path="res://img/background/Layer_0000_9.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/Quick.ttf"
@@ -32,7 +33,6 @@ text = "Start
 "
 
 [node name="ParallaxBackground" parent="Menu" instance=ExtResource( 3 )]
-editor/display_folded = true
 script = ExtResource( 4 )
 
 [node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]
@@ -57,12 +57,23 @@ motion_scale = Vector2( 0.06, 1 )
 motion_scale = Vector2( 0.06, 1 )
 
 [node name="ParallaxLayer8" parent="Menu/ParallaxBackground" index="7"]
-editor/display_folded = false
 motion_scale = Vector2( 0.07, 1 )
 
 [node name="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer8" index="0"]
 margin_left = -51.8336
 margin_right = 876.166
+
+[node name="ParallaxLayer9" type="ParallaxLayer" parent="Menu/ParallaxBackground"]
+position = Vector2( 33.3111, 194.315 )
+motion_scale = Vector2( 0.08, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="TextureRect" type="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer9"]
+margin_left = -37.6727
+margin_top = -684.957
+margin_right = 890.327
+margin_bottom = 108.043
+texture = ExtResource( 5 )
 [connection signal="pressed" from="Menu/btnStart" to="." method="_on_TouchScreenButton_pressed"]
 
 [editable path="Menu/ParallaxBackground"]
