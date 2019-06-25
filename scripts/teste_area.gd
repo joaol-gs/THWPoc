@@ -29,6 +29,8 @@ func _process(delta):
 		$BtnEspecial.visible = true
 	else:
 		$BtnEspecial.visible = false
+	if $BtnLeft.is_pressed():
+		$Player.go_right()
 
 func _on_Timer_timeout():
 	if $Player.moving :
@@ -76,3 +78,8 @@ func setVidas() :
 
 func _on_avisoTimer_timeout():
 	$Aviso.visible = false
+
+
+func _on_BtnLeft_pressed():
+	print("teste")
+	

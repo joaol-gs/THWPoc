@@ -14,6 +14,8 @@ var jump = false
 var bodie = 1 setget set_sprite
 var anime=""
 var pre_fire = preload("res://scenes/Fire.tscn")
+var new_anim = "iddle"
+var walk = false
 
 var anim = [
 	"res://img/sprites/run.png",
@@ -29,24 +31,12 @@ func _draw():
 
 func _physics_process(delta):
 	moving = false
-	var new_anim = "iddle"
-	
 	velocity.y += GRAVITY * delta
 	velocity.x = 0
-	
 	if Input.is_action_pressed("ui_right"):
-		moving = true
-		new_anim = "run"
-#		velocity.x = VELX
-		get_node( "Sprite" ).set_flip_h( false )
-		
+		go_right()
 	if Input.is_action_pressed("ui_up"):
 		jump = true
-		
-	if Input.is_action_pressed("ui_left"):
-		new_anim = "run"
-#		velocity.x -= VELX
-		get_node( "Sprite" ).set_flip_h( true )
 		
 	if Input.is_action_just_pressed("ui_shot"):
 		if moving:
@@ -65,7 +55,7 @@ func _physics_process(delta):
 		if jump:
 			velocity.y = -JUMP_SPEED
 	jump = false
-	
+	new_anim = "iddle"
 
 func set_sprite(val):
 	bodie = val
@@ -74,3 +64,12 @@ func set_sprite(val):
 
 func _on_Area2D_area_entered(area):
 	life -= 10
+func _on_BtnLeft_pressed():
+	walk = true
+func _on_BtnUP_pressed():
+	jump = true
+	
+func go_right():
+	moving = true
+	new_anim = "run"
+	get_node( "Sprite" ).set_flip_h( false )

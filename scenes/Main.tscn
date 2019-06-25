@@ -16,7 +16,6 @@ font_data = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Menu" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="btnStart" type="TouchScreenButton" parent="Menu"]
 position = Vector2( 157.828, 97.6779 )
@@ -60,6 +59,10 @@ motion_scale = Vector2( 0.06, 1 )
 [node name="ParallaxLayer8" parent="Menu/ParallaxBackground" index="7"]
 editor/display_folded = false
 motion_scale = Vector2( 0.07, 1 )
+
+[node name="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer8" index="0"]
+margin_left = -51.8336
+margin_right = 876.166
 [connection signal="pressed" from="Menu/btnStart" to="." method="_on_TouchScreenButton_pressed"]
 
 [editable path="Menu/ParallaxBackground"]
