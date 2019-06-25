@@ -6,7 +6,6 @@
 script/source = "extends KinematicBody2D
 
 const VELX = -500
-const GRAVITY = 1500
 const JUMP_SPEED = 500
 
 var velocity = Vector2(0, 0)
@@ -18,7 +17,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity.x = VELX
-	velocity.y += GRAVITY * delta
 	move_and_slide(velocity, Vector2(0, -1))
 	pass
 

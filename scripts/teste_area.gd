@@ -51,7 +51,12 @@ func _on_Timer_timeout():
 	if $Player.moving :
 		print($Timer.wait_time)
 		var lexusF = pre_lexusf.instance()
-		lexusF.global_position = $Spawn.global_position
+		var spw = randi()%2+1
+		if spw == 1:
+			lexusF.global_position = $Spawn.global_position
+		elif spw == 2:
+			lexusF.global_position = $Spawn2.global_position
+		
 		get_parent().add_child(lexusF)
 		lexusF.add_to_group("quants")
 		if $Timer.wait_time > .3:
@@ -93,7 +98,6 @@ func setVidas() :
 
 func _on_avisoTimer_timeout():
 	$Aviso.visible = false
-
 
 func _on_BtnLeft_pressed():
 	print("teste")

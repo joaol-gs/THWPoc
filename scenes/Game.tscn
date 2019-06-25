@@ -95,7 +95,10 @@ shape = SubResource( 1 )
 wait_time = 3.14
 
 [node name="Spawn" type="Position2D" parent="."]
-position = Vector2( 683.157, 134.737 )
+position = Vector2( 564.865, 115.122 )
+
+[node name="Spawn2" type="Position2D" parent="."]
+position = Vector2( 568.572, 193.83 )
 
 [node name="limiter" type="StaticBody2D" parent="."]
 editor/display_folded = true
