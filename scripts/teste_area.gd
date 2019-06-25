@@ -25,6 +25,10 @@ func _process(delta):
 			$Player.life = 100
 			$Player.lifes -= 1
 			setVidas()
+	if le == 100 and $Player.lifes >= 2:
+		$BtnEspecial.visible = true
+	else:
+		$BtnEspecial.visible = false
 
 func _on_Timer_timeout():
 	if $Player.moving :
