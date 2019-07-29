@@ -9,6 +9,7 @@ const VELX = -500
 const JUMP_SPEED = 500
 
 var velocity = Vector2(0, 0)
+var dpoints = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +22,7 @@ func _process(delta):
 	pass
 
 func _on_Area2D_area_entered(area):
-	
+#	get_parent().addPoint(dpoints)
 	queue_free()
 
 

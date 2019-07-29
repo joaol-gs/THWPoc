@@ -12,6 +12,8 @@ func _on_TouchScreenButton_pressed():
 
 func _esconde():
 	$Menu/btnStart.visible = false
+	$Menu/Pont.visible = false
+	$Menu/Label.visible = false
 	$Menu/ParallaxBackground/ParallaxLayer.visible = false
 	$Menu/ParallaxBackground/ParallaxLayer2.visible = false
 	$Menu/ParallaxBackground/ParallaxLayer3.visible = false

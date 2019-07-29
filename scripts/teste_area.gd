@@ -12,6 +12,7 @@ func _ready():
 	$Timer.start()
 	$scoreTime.start()
 	setVidas()
+	_save()
 	pass
 
 func _process(delta):
@@ -20,6 +21,7 @@ func _process(delta):
 	_animaBarra()
 	if lp < 0:
 		if $Player.lifes == 1:
+			_compara()
 			deadMen()
 		else:
 			$Player.life = 100
@@ -101,4 +103,20 @@ func _on_avisoTimer_timeout():
 
 func _on_BtnLeft_pressed():
 	print("teste")
+
+func _compara():
+	if(score > 1):
+		_save()
+	else:
+		pass
 	
+func _save():
+	var store = load("res://scripts/save.gd").new()
+	store._save(score)
+	pass
+
+func _load():
+	pass
+
+func _addPoint(var point):
+	print(point) 
