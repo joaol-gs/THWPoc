@@ -4,6 +4,7 @@ var pre_lexusf = preload("res://scenes/LexusF.tscn")
 var lp = 0
 var le = 0
 var score = 0
+var store = load("res://scripts/save.gd").new()
 
 var gameStart = true
 
@@ -12,7 +13,8 @@ func _ready():
 	$Timer.start()
 	$scoreTime.start()
 	setVidas()
-	_save()
+	store._save(1700)
+	store._load()
 	pass
 
 func _process(delta):
@@ -21,7 +23,6 @@ func _process(delta):
 	_animaBarra()
 	if lp < 0:
 		if $Player.lifes == 1:
-			_compara()
 			deadMen()
 		else:
 			$Player.life = 100
@@ -103,17 +104,6 @@ func _on_avisoTimer_timeout():
 
 func _on_BtnLeft_pressed():
 	print("teste")
-
-func _compara():
-	if(score > 1):
-		_save()
-	else:
-		pass
-	
-func _save():
-	var store = load("res://scripts/save.gd").new()
-	store._save(score)
-	pass
 
 func _load():
 	pass
