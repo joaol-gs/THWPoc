@@ -4,7 +4,7 @@ var pre_lexusf = preload("res://scenes/LexusF.tscn")
 var lp = 0
 var le = 0
 var score = 0
-var store = load("res://scripts/save.gd").new()
+var storesys = load("res://scripts/save.gd").new()
 
 var gameStart = true
 
@@ -13,8 +13,6 @@ func _ready():
 	$Timer.start()
 	$scoreTime.start()
 	setVidas()
-	store._save(1700)
-	store._load()
 	pass
 
 func _process(delta):
@@ -23,6 +21,9 @@ func _process(delta):
 	_animaBarra()
 	if lp < 0:
 		if $Player.lifes == 1:
+			if score > storesys._load():
+				storesys._save(score)
+				storesys._savestats(le, score, $Timer.wait_time)
 			deadMen()
 		else:
 			$Player.life = 100
@@ -85,8 +86,8 @@ func _on_scoreTime_timeout():
 		$scoreTime.start()
 
 func _on_Button_pressed():
-	get_tree().paused = false
 	get_tree().reload_current_scene()
+	get_tree().paused = false
 
 func deadMen():
 	var enemies = get_tree().get_nodes_in_group("quants")

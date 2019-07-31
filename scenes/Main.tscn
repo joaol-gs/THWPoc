@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/Main.gd" type="Script" id=1]
-[ext_resource path="res://img/GUI/rect10.png" type="Texture" id=2]
-[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/ParallaxBackgroundload.gd" type="Script" id=4]
-[ext_resource path="res://img/background/Layer_0000_9.png" type="Texture" id=5]
+[ext_resource path="res://img/GUI/path10.png" type="Texture" id=2]
+[ext_resource path="res://img/GUI/play-button (1).png" type="Texture" id=3]
+[ext_resource path="res://img/GUI/rect817.png" type="Texture" id=4]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ParallaxBackgroundload.gd" type="Script" id=6]
+[ext_resource path="res://img/background/Layer_0000_9.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/Quick.ttf"
@@ -22,22 +24,37 @@ font_data = SubResource( 3 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -152.543 ]
+}
 
 [node name="Menu" type="Node2D" parent="."]
 
-[node name="btnStart" type="TouchScreenButton" parent="Menu"]
-position = Vector2( 157.828, 97.6779 )
-scale = Vector2( 0.267594, 0.247249 )
+[node name="btnplay" type="TouchScreenButton" parent="Menu"]
+editor/display_folded = true
+position = Vector2( 412.184, 194.41 )
+scale = Vector2( 0.10997, 0.10997 )
 normal = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="Menu/btnStart"]
-margin_left = 221.485
-margin_top = 83.7699
-margin_right = 392.485
-margin_bottom = 188.77
+[node name="play-button" type="Sprite" parent="Menu/btnplay"]
+position = Vector2( 308.24, 288.835 )
+scale = Vector2( 0.431752, 0.431752 )
+texture = ExtResource( 3 )
+
+[node name="btnStatus" type="TouchScreenButton" parent="Menu"]
+editor/display_folded = true
+position = Vector2( 145.828, 98.6779 )
+scale = Vector2( 0.267594, 0.247249 )
+normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Menu/btnStatus"]
+margin_left = 246.358
+margin_top = 98.5287
+margin_right = 448.358
+margin_bottom = 203.529
 rect_pivot_offset = Vector2( -1596.06, -195.713 )
 custom_fonts/font = SubResource( 2 )
-text = "Start
+text = "Status
 "
 
 [node name="Pont" type="Label" parent="Menu"]
@@ -49,6 +66,7 @@ rect_pivot_offset = Vector2( -1596.06, -195.713 )
 custom_fonts/font = SubResource( 4 )
 text = "000000
 "
+align = 1
 
 [node name="Label" type="Label" parent="Menu"]
 margin_left = 30.0082
@@ -57,8 +75,9 @@ margin_right = 136.008
 margin_bottom = 250.636
 text = "Maior Pontuação"
 
-[node name="ParallaxBackground" parent="Menu" instance=ExtResource( 3 )]
-script = ExtResource( 4 )
+[node name="ParallaxBackground" parent="Menu" instance=ExtResource( 5 )]
+editor/display_folded = true
+script = ExtResource( 6 )
 
 [node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]
 motion_scale = Vector2( 0.01, 1 )
@@ -82,7 +101,6 @@ motion_scale = Vector2( 0.06, 1 )
 motion_scale = Vector2( 0.06, 1 )
 
 [node name="ParallaxLayer8" parent="Menu/ParallaxBackground" index="7"]
-editor/display_folded = false
 motion_scale = Vector2( 0.07, 1 )
 
 [node name="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer8" index="0"]
@@ -90,16 +108,18 @@ margin_left = -51.8336
 margin_right = 876.166
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="Menu/ParallaxBackground"]
+editor/display_folded = true
 position = Vector2( 33.3111, 194.315 )
 motion_scale = Vector2( 0.08, 1 )
 motion_mirroring = Vector2( 928, 0 )
 
 [node name="TextureRect" type="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer9"]
-margin_left = -37.6727
-margin_top = -684.957
-margin_right = 890.327
-margin_bottom = 108.043
-texture = ExtResource( 5 )
-[connection signal="pressed" from="Menu/btnStart" to="." method="_on_TouchScreenButton_pressed"]
+margin_left = -36.8582
+margin_top = -685.772
+margin_right = 891.142
+margin_bottom = 107.228
+texture = ExtResource( 7 )
+[connection signal="pressed" from="Menu/btnplay" to="." method="_on_btnplay_pressed"]
+[connection signal="pressed" from="Menu/btnStatus" to="." method="_on_TouchScreenButton_pressed"]
 
 [editable path="Menu/ParallaxBackground"]
