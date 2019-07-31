@@ -76,6 +76,7 @@ margin_bottom = 250.636
 text = "Maior Pontuação"
 
 [node name="ParallaxBackground" parent="Menu" instance=ExtResource( 5 )]
+editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]

@@ -4,9 +4,9 @@ const VELX = 500
 const GRAVITY = 1500
 const JUMP_SPEED = 600
 
-export var life = 10
+export var life = 100
 export var energy = 10
-export var lifes = 1
+export var lifes = 2
 export var moving = false
 
 var velocity = Vector2(0, 0)
@@ -40,7 +40,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_shot"):
 		if moving:
-			if get_tree().get_nodes_in_group("fires").size() < 2:
+			if get_tree().get_nodes_in_group("fires").size() < 4:
 				var fire = pre_fire.instance()
 				fire.global_position = $muzzle.global_position
 				get_parent().add_child(fire)
