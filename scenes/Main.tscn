@@ -43,7 +43,7 @@ texture = ExtResource( 3 )
 
 [node name="btnStatus" type="TouchScreenButton" parent="Menu"]
 editor/display_folded = true
-position = Vector2( 145.828, 98.6779 )
+position = Vector2( 143.495, 68.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )
 
@@ -76,7 +76,6 @@ margin_bottom = 250.636
 text = "Maior Pontuação"
 
 [node name="ParallaxBackground" parent="Menu" instance=ExtResource( 5 )]
-editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]

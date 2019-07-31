@@ -1,6 +1,7 @@
 extends Node2D
 
 var pre_play = preload("res://scenes/Game.tscn")
+var pre_status = preload("res://scenes/Status.tscn")
 var next_level = pre_play.instance()
 var storesys = load("res://scripts/save.gd").new()
 var bestscore
@@ -18,6 +19,8 @@ func _ready():
 #	pass
 
 func _on_TouchScreenButton_pressed():
+	var status_screen = pre_status.instance()
+	get_tree().get_root().add_child(status_screen)
 	pass
 
 #func _esconde():
