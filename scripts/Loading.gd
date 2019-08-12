@@ -1,14 +1,12 @@
 extends Node2D
 
-var pre_play  =  preload("res://scenes/Game.tscn")
-var next_level = pre_play.instance()
-
 func _ready():
+	set_process(true)
 	pass 
 
 func _process(delta):
 	if $ProgressBar.value == 100:
-		get_tree().get_root().add_child(next_level)
+		get_tree().change_scene("res://scenes/Game.tscn")
 		queue_free()
 	pass
 

@@ -31,7 +31,6 @@ __meta__ = {
 [node name="Menu" type="Node2D" parent="."]
 
 [node name="btnplay" type="TouchScreenButton" parent="Menu"]
-editor/display_folded = true
 position = Vector2( 412.184, 194.41 )
 scale = Vector2( 0.10997, 0.10997 )
 normal = ExtResource( 2 )
@@ -42,7 +41,6 @@ scale = Vector2( 0.431752, 0.431752 )
 texture = ExtResource( 3 )
 
 [node name="btnStatus" type="TouchScreenButton" parent="Menu"]
-editor/display_folded = true
 position = Vector2( 143.495, 68.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )
@@ -76,31 +74,38 @@ margin_bottom = 250.636
 text = "Maior Pontuação"
 
 [node name="ParallaxBackground" parent="Menu" instance=ExtResource( 5 )]
-editor/display_folded = true
 script = ExtResource( 6 )
 
 [node name="ParallaxLayer" parent="Menu/ParallaxBackground" index="0"]
+z_index = 200
 motion_scale = Vector2( 0.01, 1 )
 
 [node name="ParallaxLayer3" parent="Menu/ParallaxBackground" index="1"]
+z_index = 200
 motion_scale = Vector2( 0.02, 1 )
 
 [node name="ParallaxLayer2" parent="Menu/ParallaxBackground" index="2"]
+z_index = 200
 motion_scale = Vector2( 0.03, 1 )
 
 [node name="ParallaxLayer4" parent="Menu/ParallaxBackground" index="3"]
+z_index = 200
 motion_scale = Vector2( 0.04, 1 )
 
 [node name="ParallaxLayer5" parent="Menu/ParallaxBackground" index="4"]
+z_index = 200
 motion_scale = Vector2( 0.05, 1 )
 
 [node name="ParallaxLayer6" parent="Menu/ParallaxBackground" index="5"]
+z_index = 200
 motion_scale = Vector2( 0.06, 1 )
 
 [node name="ParallaxLayer7" parent="Menu/ParallaxBackground" index="6"]
+z_index = 200
 motion_scale = Vector2( 0.06, 1 )
 
 [node name="ParallaxLayer8" parent="Menu/ParallaxBackground" index="7"]
+z_index = 200
 motion_scale = Vector2( 0.07, 1 )
 
 [node name="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer8" index="0"]
@@ -108,18 +113,17 @@ margin_left = -51.8336
 margin_right = 876.166
 
 [node name="ParallaxLayer9" type="ParallaxLayer" parent="Menu/ParallaxBackground"]
-editor/display_folded = true
 position = Vector2( 33.3111, 194.315 )
+z_index = 200
 motion_scale = Vector2( 0.08, 1 )
 motion_mirroring = Vector2( 928, 0 )
 
 [node name="TextureRect" type="TextureRect" parent="Menu/ParallaxBackground/ParallaxLayer9"]
-margin_left = -36.8582
-margin_top = -685.772
-margin_right = 891.142
-margin_bottom = 107.228
+margin_left = -36.0844
+margin_top = -684.998
+margin_right = 891.916
+margin_bottom = 108.002
 texture = ExtResource( 7 )
 [connection signal="pressed" from="Menu/btnplay" to="." method="_on_btnplay_pressed"]
-[connection signal="pressed" from="Menu/btnStatus" to="." method="_on_TouchScreenButton_pressed"]
 
 [editable path="Menu/ParallaxBackground"]

@@ -12,6 +12,7 @@ func _ready():
 	$Aviso/avisoTimer.start()
 	$Timer.start()
 	$scoreTime.start()
+	$DeadMenu.visible = false
 	setVidas()
 	pass
 
@@ -86,16 +87,21 @@ func _on_scoreTime_timeout():
 		$scoreTime.start()
 
 func _on_Button_pressed():
-	get_tree().reload_current_scene()
+#	var pre_loading = preload("res://scenes/Game.tscn")
+#	var next_level = pre_loading.instance()
+#	get_tree().get_root().add_child(next_level)
 	get_tree().paused = false
+#	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().reload_current_scene()
+	queue_free()
 
 func deadMen():
 	var enemies = get_tree().get_nodes_in_group("quants")
 	for enemy in enemies:
 		 enemy.queue_free()
+	$DeadMenu.visible = true
 	get_tree().paused = true
 	$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
-	$DeadMenu.visible = true
 
 func setVidas() :
 	$Panel/lifes.set_text(String($Player.lifes))
@@ -111,3 +117,15 @@ func _load():
 
 func _addPoint(var point):
 	print(point) 
+
+
+func _on_btnReload_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+	queue_free()
+
+
+func _on_btnMenu_pressed():
+	get_tree().change_scene("res://scenes/Main.tscn")
+	get_tree().paused = false
+	queue_free()
