@@ -42,7 +42,7 @@ texture = ExtResource( 3 )
 
 [node name="btnStatus" type="TouchScreenButton" parent="Menu"]
 editor/display_folded = true
-position = Vector2( 143.495, 68.3528 )
+position = Vector2( 508.495, 68.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )
 
@@ -57,7 +57,7 @@ text = "Status
 "
 
 [node name="btnRetomar" type="TouchScreenButton" parent="Menu"]
-position = Vector2( 143.495, 128.353 )
+position = Vector2( 143.495, 91.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )
 
