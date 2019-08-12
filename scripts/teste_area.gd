@@ -5,8 +5,8 @@ var lp = 0
 var le = 0
 var score = 0
 var storesys = load("res://scripts/save.gd").new()
-
 var gameStart = true
+var retom = false
 
 func _ready():
 	$Aviso/avisoTimer.start()
@@ -22,7 +22,7 @@ func _process(delta):
 	_animaBarra()
 	if lp < 0:
 		if $Player.lifes == 1:
-			if score > storesys._load():
+			if score > int(storesys._load()):
 				storesys._save(score)
 				storesys._savestats(le, score, $Timer.wait_time)
 			deadMen()
@@ -121,7 +121,8 @@ func _addPoint(var point):
 
 func _on_btnReload_pressed():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+#	get_tree().reload_current_scene()
+	get_tree().change_scene("res://scenes/Game.tscn")
 	queue_free()
 
 
@@ -129,3 +130,17 @@ func _on_btnMenu_pressed():
 	get_tree().change_scene("res://scenes/Main.tscn")
 	get_tree().paused = false
 	queue_free()
+	
+func _retom():
+	var info = storesys._getRetom()
+	$Player.energy = info['energy']
+	$Player.lifes = 1
+	get_tree().get_root().print_tree()
+	print("Energy of player is now: " + String($Player.energy))
+	$Timer.wait_time = info['spawnt']
+	print("Spawn time is now: " + String($Timer.wait_time))
+	score = info['score']
+	print("The score is now: " + String(score))
+	$Panel/score.text = String(score)
+	$Panel/lifes.text = String($Player.lifes)
+	$Aviso/Label2.text = "Prepare-se!"

@@ -4,9 +4,9 @@ const VELX = 500
 const GRAVITY = 1500
 const JUMP_SPEED = 600
 
-export var life = 10
+export var life = 100
 export var energy = 10
-export var lifes = 1
+export var lifes = 2
 export var moving = false
 
 var velocity = Vector2(0, 0)

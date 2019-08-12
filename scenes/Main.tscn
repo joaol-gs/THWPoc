@@ -41,6 +41,7 @@ scale = Vector2( 0.431752, 0.431752 )
 texture = ExtResource( 3 )
 
 [node name="btnStatus" type="TouchScreenButton" parent="Menu"]
+editor/display_folded = true
 position = Vector2( 143.495, 68.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )
@@ -53,6 +54,21 @@ margin_bottom = 203.529
 rect_pivot_offset = Vector2( -1596.06, -195.713 )
 custom_fonts/font = SubResource( 2 )
 text = "Status
+"
+
+[node name="btnRetomar" type="TouchScreenButton" parent="Menu"]
+position = Vector2( 143.495, 128.353 )
+scale = Vector2( 0.267594, 0.247249 )
+normal = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Menu/btnRetomar"]
+margin_left = 227.673
+margin_top = 98.5287
+margin_right = 485.673
+margin_bottom = 203.529
+rect_pivot_offset = Vector2( -1596.06, -195.713 )
+custom_fonts/font = SubResource( 2 )
+text = "Retomar
 "
 
 [node name="Pont" type="Label" parent="Menu"]
@@ -125,5 +141,7 @@ margin_right = 891.916
 margin_bottom = 108.002
 texture = ExtResource( 7 )
 [connection signal="pressed" from="Menu/btnplay" to="." method="_on_btnplay_pressed"]
+[connection signal="pressed" from="Menu/btnStatus" to="." method="_on_btnStatus_pressed"]
+[connection signal="pressed" from="Menu/btnRetomar" to="." method="_on_btnRetomar_pressed"]
 
 [editable path="Menu/ParallaxBackground"]

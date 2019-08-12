@@ -27,7 +27,10 @@ func _load():
 	data = parse_json(save_file.get_as_text())
 	save_file.close()
 	#carregar as informações em variaveis
-	return data['score']
+	if data['score'] == null or data['score'] == 0:
+		return 0
+	else:
+		return data['score']
 	pass
 	
 func _savestats(var pe, var ps, var st):
@@ -45,7 +48,25 @@ func _savestats(var pe, var ps, var st):
 	save_file.close()
 	pass
 	
+func _getRetom():
+#	var score
+	var save_file = File.new()
+	if not save_file.file_exists(SAVE_PATH):
+        return '0000'# Error! We don't have a save to load.
+	save_file.open(SAVE_F, File.READ)
+	var data = {}
+	data = parse_json(save_file.get_as_text())
+	save_file.close()
+	#carregar as informações em variaveis
+	return data
+	pass
 	
+func _verify():
+	var save_file = File.new()
+	if not save_file.file_exists(SAVE_F):
+		return false
+	else:
+		return true
 #	while not save_file.eof_reached():
 #		var current_line = parse_json(save_file.get_line())
 #		# Firstly, we need to create the object and add it to the tree and set its position.
