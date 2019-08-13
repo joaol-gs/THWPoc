@@ -13,6 +13,7 @@ func _ready():
 	$Timer.start()
 	$scoreTime.start()
 	$DeadMenu.visible = false
+	$PauseMenu.visible = false
 	setVidas()
 	pass
 
@@ -96,9 +97,7 @@ func _on_Button_pressed():
 	queue_free()
 
 func deadMen():
-	var enemies = get_tree().get_nodes_in_group("quants")
-	for enemy in enemies:
-		 enemy.queue_free()
+	_killall()
 	$DeadMenu.visible = true
 	get_tree().paused = true
 	$DeadMenu/Dead/Label.set_text(String(score) + " pontos")
@@ -112,7 +111,10 @@ func _on_avisoTimer_timeout():
 func _on_BtnLeft_pressed():
 	print("teste")
 
-func _load():
+func _killall():
+	var enemies = get_tree().get_nodes_in_group("quants")
+	for enemy in enemies:
+		 enemy.queue_free()
 	pass
 
 func _addPoint(var point):
@@ -144,3 +146,22 @@ func _retom():
 	$Panel/score.text = String(score)
 	$Panel/lifes.text = String($Player.lifes)
 	$Aviso/Label2.text = "Prepare-se!"
+
+
+func _on_btnPause_pressed():
+	$btnPause.visible = false
+	$PauseMenu.visible = true
+	get_tree().paused = true
+
+
+func _on_btnContinue_pressed():
+	$btnPause.visible = true
+	$PauseMenu.visible = false
+	get_tree().paused = false
+
+
+func _on_btnExit_pressed():
+	get_tree().paused = false
+	_killall()
+	get_tree().change_scene("res://scenes/Main.tscn")
+	queue_free()
