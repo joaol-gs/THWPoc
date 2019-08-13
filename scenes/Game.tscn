@@ -170,6 +170,8 @@ text = "2
 wait_time = 0.5
 
 [node name="DeadMenu" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
 z_index = 4096
 
 [node name="Dead" type="Panel" parent="DeadMenu"]
@@ -210,6 +212,54 @@ scale = Vector2( 0.208742, 0.208742 )
 normal = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="DeadMenu/Dead/btnMenu"]
+margin_left = 215.103
+margin_top = 80.1317
+margin_right = 393.103
+margin_bottom = 132.132
+custom_fonts/font = SubResource( 13 )
+text = "Menu"
+
+[node name="PauseMenu" type="Node2D" parent="."]
+z_index = 4096
+
+[node name="PausePanel" type="Panel" parent="PauseMenu"]
+pause_mode = 2
+margin_left = 90.0
+margin_top = 62.0
+margin_right = 396.0
+margin_bottom = 234.0
+
+[node name="Label" type="Label" parent="PauseMenu/PausePanel"]
+margin_left = 100.874
+margin_top = 16.1443
+margin_right = 194.874
+margin_bottom = 67.1443
+custom_fonts/font = SubResource( 11 )
+text = "Pausado
+"
+valign = 1
+
+[node name="btnMenu2" type="TouchScreenButton" parent="PauseMenu/PausePanel"]
+editor/display_folded = true
+position = Vector2( 87.7633, 62.2696 )
+scale = Vector2( 0.208742, 0.208742 )
+normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="PauseMenu/PausePanel/btnMenu2"]
+margin_left = 151.555
+margin_top = 83.21
+margin_right = 441.555
+margin_bottom = 135.21
+custom_fonts/font = SubResource( 13 )
+text = "Reiniciar"
+
+[node name="btnContinue" type="TouchScreenButton" parent="PauseMenu/PausePanel"]
+editor/display_folded = true
+position = Vector2( 87.7633, 114.36 )
+scale = Vector2( 0.208742, 0.208742 )
+normal = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="PauseMenu/PausePanel/btnContinue"]
 margin_left = 215.103
 margin_top = 80.1317
 margin_right = 393.103

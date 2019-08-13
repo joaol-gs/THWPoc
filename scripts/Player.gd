@@ -13,6 +13,7 @@ var velocity = Vector2(0, 0)
 var jump = false
 var bodie = 1 setget set_sprite
 var anime=""
+var max_shot = 2
 var pre_fire = preload("res://scenes/Fire.tscn")
 var new_anim = "iddle"
 var walk = false
@@ -40,7 +41,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_shot"):
 		if moving:
-			if get_tree().get_nodes_in_group("fires").size() < 4:
+			if get_tree().get_nodes_in_group("fires").size() < max_shot:
 				var fire = pre_fire.instance()
 				fire.global_position = $muzzle.global_position
 				get_parent().add_child(fire)
@@ -76,7 +77,7 @@ func go_right():
 
 func _on_BtnFire_pressed():
 	if moving:
-			if get_tree().get_nodes_in_group("fires").size() < 2:
+			if get_tree().get_nodes_in_group("fires").size() < max_shot:
 				var fire = pre_fire.instance()
 				fire.global_position = $muzzle.global_position
 				get_parent().add_child(fire)
