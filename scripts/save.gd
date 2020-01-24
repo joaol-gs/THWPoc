@@ -1,7 +1,7 @@
 extends Node
 
-const SAVE_PATH = "res://save.json"
-const SAVE_F = "res://savestats.json"
+const SAVE_PATH = "user://save.json"
+const SAVE_F = "user://savestats.json"
 
 func _save(var bestscore):
 	#Pegar todos as informações a serem salvas
@@ -67,8 +67,3 @@ func _verify():
 		return false
 	else:
 		return true
-#	while not save_file.eof_reached():
-#		var current_line = parse_json(save_file.get_line())
-#		# Firstly, we need to create the object and add it to the tree and set its position.
-#		print(current_line["score"])
-#	save_file.close()

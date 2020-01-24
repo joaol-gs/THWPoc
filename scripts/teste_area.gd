@@ -9,17 +9,19 @@ var gameStart = true
 var retom = false
 
 func _ready():
+	add_to_group("ssroot")
 	$Aviso/avisoTimer.start()
 	$Timer.start()
 	$scoreTime.start()
 	$DeadMenu.visible = false
 	$PauseMenu.visible = false
+	connect("death", self, "_on_Death")
 	setVidas()
 	pass
 
 func _process(delta):
 	lp = $Player.life
-	le = $Player.energy
+#	le = $Player.energy
 	_animaBarra()
 	if lp < 0:
 		if $Player.lifes == 1:
@@ -43,7 +45,7 @@ func _process(delta):
 		$ParallaxBackground.go_right()
 		$Chao.go_right()
 	else:
-		$Player.moving = false
+		$Player._stop()
 		
 	#Movimentoação por teclado
 	if Input.is_action_pressed("ui_right"):
@@ -55,7 +57,7 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	if $Player.moving :
-		print($Timer.wait_time)
+#		print($Timer.wait_time)
 		var lexusF = pre_lexusf.instance()
 		var spw = randi()%2+1
 		if spw == 1:
@@ -137,7 +139,6 @@ func _retom():
 	var info = storesys._getRetom()
 	$Player.energy = info['energy']
 	$Player.lifes = 1
-	get_tree().get_root().print_tree()
 	print("Energy of player is now: " + String($Player.energy))
 	$Timer.wait_time = info['spawnt']
 	print("Spawn time is now: " + String($Timer.wait_time))
@@ -165,3 +166,9 @@ func _on_btnExit_pressed():
 	_killall()
 	get_tree().change_scene("res://scenes/Main.tscn")
 	queue_free()
+
+func _testando(var text):
+	print(text)
+	
+func _on_Death():
+	print("mueu")

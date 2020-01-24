@@ -224,6 +224,7 @@ scale = Vector2( 0.0630552, 0.0630552 )
 normal = ExtResource( 7 )
 
 [node name="PauseMenu" type="Node2D" parent="."]
+visible = false
 z_index = 4096
 
 [node name="PausePanel" type="Panel" parent="PauseMenu"]
@@ -285,12 +286,12 @@ valign = 1
 wait_time = 2.73
 
 [node name="BtnLeft" type="TouchScreenButton" parent="."]
-position = Vector2( 48.894, 232.176 )
+position = Vector2( 6.89401, 232.176 )
 scale = Vector2( 0.508905, 0.508905 )
 normal = ExtResource( 8 )
 
 [node name="BtnUP" type="TouchScreenButton" parent="."]
-position = Vector2( 4.52147, 233.047 )
+position = Vector2( 4.52147, 187.047 )
 scale = Vector2( 0.501943, 0.501943 )
 normal = ExtResource( 9 )
 

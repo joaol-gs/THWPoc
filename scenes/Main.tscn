@@ -22,7 +22,9 @@ font_path = "res://font/Quick.ttf"
 size = 25
 font_data = SubResource( 3 )
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=[
+"ssroot",
+]]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_vertical_guides_": [ -152.543 ]
@@ -57,6 +59,7 @@ text = "Status
 "
 
 [node name="btnRetomar" type="TouchScreenButton" parent="Menu"]
+editor/display_folded = true
 position = Vector2( 143.495, 91.3528 )
 scale = Vector2( 0.267594, 0.247249 )
 normal = ExtResource( 4 )

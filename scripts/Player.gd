@@ -56,7 +56,6 @@ func _physics_process(delta):
 		if jump:
 			velocity.y = -JUMP_SPEED
 	jump = false
-	new_anim = "iddle"
 
 func set_sprite(val):
 	bodie = val
@@ -75,6 +74,10 @@ func go_right():
 	new_anim = "run"
 	get_node( "Sprite" ).set_flip_h( false )
 
+func _stop():
+	new_anim = "iddle"
+	moving = false
+	
 func _on_BtnFire_pressed():
 	if moving:
 			if get_tree().get_nodes_in_group("fires").size() < max_shot:

@@ -11,6 +11,7 @@ var storesys = load("res://scripts/save.gd").new()
 
 var bestscore
 var retomInfo
+var teste = "deu"
 
 func _ready():
 	if storesys._verify():
@@ -41,8 +42,15 @@ func _on_btnStatus_pressed():
 
 
 func _on_btnRetomar_pressed():
+	var mains = get_tree().get_nodes_in_group("ssroot")
+#	for scene in mains:
+##		 scene._testando("mueeeu")
+#		print(scene.id)
+#
 	get_tree().get_root().add_child(next_game)
 	next_game._retom()
 	queue_free()
-	var arvore = get_tree().get_root().print_tree()
 	pass
+	
+func _testess():
+	print("Ta muendo gostoso")

@@ -11,6 +11,7 @@ const JUMP_SPEED = 500
 var velocity = Vector2(0, 0)
 var dpoints = 3
 
+signal death
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,6 +24,7 @@ func _process(delta):
 
 func _on_Area2D_area_entered(area):
 #	get_parent().addPoint(dpoints)
+	emit_signal(\"death\")
 	queue_free()
 
 
@@ -56,7 +58,6 @@ position = Vector2( -0.245293, 30.0093 )
 shape = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
-editor/display_folded = true
 collision_layer = 4
 
 [node name="cabeca2" type="CollisionShape2D" parent="Area2D"]
